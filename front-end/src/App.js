@@ -15,7 +15,12 @@ const App = () => {
   return (
     <div>
       <h1>First</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre> 
+      <pre>{data.point.map(i => (
+        <li key={i['subreddit']}>
+        <p> Subreddit: </p>
+
+        </li>
+      ))}</pre> 
 
       
     </div>
