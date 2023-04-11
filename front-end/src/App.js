@@ -1,31 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
 
-const App = () => {
-  const [data, setData] = useState({ point: [] })
+function App() {
+  const [formData, setFormData] = useState('');
 
-  useEffect(() =>{
-    fetch("/point")
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-        console.log(data)
-      })
-  }, [])
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const requestOptions = {
+      methods: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: formData })
+    };
+    const response = await fetch('/api/data', requestOptions);
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const handleChange = (event) => {
+    setFormData(event.target.value);
+  };
 
   return (
     <div>
-      <h1>First</h1>
-      <pre>{data.point.map(i => (
-        <li key={i['subreddit']}>
-        <p> Subreddit: </p>
-
-        </li>
-      ))}</pre> 
-
-      
+      <form onSubmit={handleSubmit}>
+        <label>
+          Input data:
+          <input type="text" value={formData} onChange={handleChange} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-  )
-  
+  );
 }
 
-export default App
+export default App;
