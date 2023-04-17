@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block quote %} 
+        <h1 style="color: orangered;">Articles: </h1>
+
+        <ul class="list-group">
+        {% for article in articles %}
+            <li > Subreddit: {{article.subreddit}}</li>
+                <ul>
+                    <li class="list-group-item"> Title: {{article.title}}    </li>
+                    <li class="list-group-item"> Score: {{article.score}}     </li>
+                    <li class="list-group-item"> Url: {{article.url}}       </li>
+                </ul>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+ 
