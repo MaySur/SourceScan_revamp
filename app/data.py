@@ -4,7 +4,7 @@ client_id = "bG7tZ2k68opbl9agjUeqgg"
 client_secret = "nkHxd3nTPezesMzUB2AbG56e0FT2rg" 
 user_agent = "maysur_sourcescan"
 red = praw.Reddit(client_id = client_id, client_secret = client_secret, user_agent = user_agent)
-user_inp = "Bitcoin"
+user_inp = "Microsoft"
 
 sub_names = ['news', 'worldnews', 'politics', 'technews']
 articles = []
@@ -23,7 +23,7 @@ def Article() :
             }
             articles.append(article)
             count+=1
-    #print(articles)
+    print(articles)
     return articles
 
 Article() 
